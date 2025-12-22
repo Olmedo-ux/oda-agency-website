@@ -1,0 +1,47 @@
+/* --- RESPONSIVE LOGIC --- */
+
+@media (max-width: 992px) {
+  /* NAVBAR MOBILE */
+  .burger-menu { display: flex !important; }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    background: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    color: #000 !important;
+  }
+
+  .nav-links.open { right: 0; }
+  
+  /* HERO MOBILE */
+  #accueil h1 { font-size: 2.3rem !important; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 60px 0 !important; }
+  
+  /* Empilement des grilles Services & Portfolio */
+  #services > div > div:last-child,
+  #portfolio > div > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* About Grid */
+  .about-grid { grid-template-columns: 1fr !important; }
+  
+  /* Footer */
+  footer .container > div:first-child {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  footer img { align-self: center !important; }
+  footer div[style*="justifyContent: flex-end"] { justify-content: center !important; }
+}
