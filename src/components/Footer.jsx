@@ -1,6 +1,6 @@
 import React from "react";
 import { FacebookLogo, InstagramLogo, LinkedinLogo, Phone, Envelope, MapPin } from "phosphor-react";
-import logo from "../assets/ODA Logo .png"; 
+import logo from "../assets/ODA Logo.png"; 
 
 const Footer = () => {
   return (
