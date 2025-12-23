@@ -1,12 +1,12 @@
 import React from "react";
 import { FacebookLogo, InstagramLogo, LinkedinLogo, Phone, Envelope, MapPin } from "phosphor-react";
-import logo from "../assets/ODA Logo.png"; 
+import logo from "../assets/oda-logo.svg"; 
 
 const Footer = () => {
   return (
-    <footer style={{ background: '#0a0a0a', color: '#fff', padding: '60px 0 30px', borderTop: '1px solid #1a1a1a' }}>
+    <footer id="footer" style={{ background: '#0a0a0a', color: '#fff', padding: '80px 0 30px', borderTop: '1px solid #1a1a1a' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', marginBottom: '40px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', marginBottom: '60px' }}>
           
           {/* Colonne 1 : Branding */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -14,35 +14,45 @@ const Footer = () => {
               src={logo} 
               alt="ODA Logo" 
               style={{ 
-                height: '45px', 
-                width: 'auto', // EMPÊCHE LA DÉFORMATION
+                height: '35px', 
+                width: 'auto', 
                 objectFit: 'contain',
                 filter: 'brightness(0) invert(1)',
                 alignSelf: 'flex-start'
               }} 
             />
             <p style={{ color: '#777', fontSize: '0.9rem', lineHeight: '1.6' }}>
-              Solutions digitales premium pour marques ambitieuses.
+              Agence digitale créative basée à Lomé. Nous transformons vos idées en expériences numériques mémorables.
             </p>
           </div>
 
-          {/* Colonne 2 : Navigation Rapide */}
+          {/* Colonne 2 : Services */}
           <div>
             <h4 style={{ fontSize: '1.1rem', marginBottom: '20px', color: '#0056B3' }}>Services</h4>
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px', color: '#777', fontSize: '0.9rem' }}>
               <li>Design Graphique</li>
               <li>Développement Web</li>
               <li>Stratégie Digitale</li>
+              <li>Community Management</li>
             </ul>
           </div>
 
           {/* Colonne 3 : Contact */}
           <div>
-            <h4 style={{ fontSize: '1.1rem', marginBottom: '20px', color: '#0056B3' }}>Contact</h4>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px', color: '#777', fontSize: '0.9rem' }}>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><Phone size={16}/> +228 93 90 78 38</li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><Envelope size={16}/> olm.design.agency@gmail.com</li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><MapPin size={16}/> Agoè Logopé, Lomé</li>
+            <h4 style={{ fontSize: '1.1rem', marginBottom: '20px', color: '#0056B3' }}>Nous Contacter</h4>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px', color: '#777', fontSize: '0.9rem' }}>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Phone size={18} color="#0056B3"/> 
+                <span>+228 93 90 78 38</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Envelope size={18} color="#0056B3"/> 
+                <span>olm.design.agency@gmail.com</span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <MapPin size={18} color="#0056B3"/> 
+                <span>Agoè Logopé, Lomé, Togo</span>
+              </li>
             </ul>
           </div>
 
@@ -50,9 +60,9 @@ const Footer = () => {
           <div style={{ textAlign: 'right' }}>
             <h4 style={{ fontSize: '1.1rem', marginBottom: '20px', color: '#0056B3' }}>Suivez-nous</h4>
             <div style={{ display: 'flex', gap: '15px', justifyContent: 'flex-end' }}>
-              <FacebookLogo size={24} weight="fill" />
-              <InstagramLogo size={24} weight="fill" />
-              <LinkedinLogo size={24} weight="fill" />
+              <a href="#" style={{ color: '#fff' }}><FacebookLogo size={24} weight="fill" /></a>
+              <a href="#" style={{ color: '#fff' }}><InstagramLogo size={24} weight="fill" /></a>
+              <a href="#" style={{ color: '#fff' }}><LinkedinLogo size={24} weight="fill" /></a>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useFadeIn } from "../hooks/useFadeIn"; // Assure-toi d'avoir créé le hook
+import { useFadeIn } from "../hooks/useFadeIn"; 
 
 const About = () => {
   const [ref, isVisible] = useFadeIn(0.1);
@@ -21,7 +21,16 @@ const About = () => {
 
           <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '50px', alignItems: 'center' }}>
             <div style={{ width: '100%', height: '350px', borderRadius: '20px', overflow: 'hidden', backgroundColor: '#eee' }}>
-              <iframe title="Localisation" src="https://www.google.com/maps/embed?..." width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>
+              {/* OPTIMISATION IFRAME ICI */}
+              <iframe 
+                title="Localisation" 
+                src="https://www.google.com/maps/embed?..." 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+              ></iframe>
             </div>
 
             <div style={{ padding: '40px', background: '#F8F9FA', borderRadius: '24px' }}>
