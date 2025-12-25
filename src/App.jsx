@@ -12,9 +12,10 @@ import Footer from './components/Footer';
 const Services = lazy(() => import('./components/Services'));
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const About = lazy(() => import('./components/About'));
+// --- AJOUT DE L'IMPORT CONTACT ---
+const Contact = lazy(() => import('./components/Contact'));
 const Tips = lazy(() => import('./components/Tips'));
 const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
-// Import du nouveau composant
 const Testimonials = lazy(() => import('./components/Testimonials'));
 
 // Composant de chargement léger
@@ -38,8 +39,9 @@ const Home = () => {
       <Suspense fallback={<LoadingSpinner />}>
         <Services />
         <Portfolio />
-        <Testimonials /> {/* La section Avis est ici */}
+        <Testimonials /> 
         <About />
+        <Contact /> {/* --- AJOUT DE LA SECTION CONTACT ICI --- */}
       </Suspense>
     </>
   );

@@ -2,12 +2,17 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom"; 
 import { projects } from "../data";
 
-// Hook pour détecter si la section est visible
+// Hook pour l'animation au scroll
 const useOnScreen = (ref) => {
   const [isIntersecting, setIntersecting] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setIntersecting(entry.isIntersecting), 
+      ([entry]) => {
+        if (entry.isIntersecting) {
+            setIntersecting(true);
+            observer.disconnect(); // Animation une seule fois
+        }
+      }, 
       { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
@@ -21,63 +26,45 @@ const Portfolio = () => {
   const isPortfolioVisible = useOnScreen(portfolioRef);
 
   return (
-    <section id="portfolio" ref={portfolioRef} style={{ padding: '100px 0', backgroundColor: '#FFFFFF' }}>
+    <section id="portfolio" ref={portfolioRef} className="section-padding bg-white">
       <div className="container">
-        <div style={{ marginBottom: '50px' }}>
-          <h2 className="section-title" style={{ textAlign: 'left', margin: 0 }}>Projets Réalisés</h2>
-          <p style={{ color: '#888', marginTop: '10px' }}>Une sélection de nos meilleurs travaux en design et digital.</p>
+        
+        <div className="section-header">
+          <span className="section-tag">Portfolio</span>
+          <h2 className="section-title">Nos Réalisations</h2>
+          <p className="section-desc">
+            Découvrez une sélection de nos projets récents qui illustrent notre savoir-faire.
+          </p>
         </div>
 
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', 
-          gap: '25px' 
-        }}>
+        <div className="grid-services"> {/* Utilise la même grille que services (220px) */}
           {projects.map((p, index) => (
             <Link 
               to={`/project/${p.id}`} 
               key={p.id} 
               className="portfolio-card"
               style={{
-                textDecoration: 'none', 
-                color: 'inherit', 
-                ...cardStyle,
                 opacity: isPortfolioVisible ? 1 : 0,
                 transform: isPortfolioVisible ? 'translateY(0)' : 'translateY(40px)',
                 transition: `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`,
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = `translateY(-5px) scale(1.02)`;
-                e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = `translateY(0px) scale(1)`; 
-                e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
-              }}
             >
               
-              <div style={{ ...imageContainerStyle, overflow: 'hidden' }}>
+              <div className="portfolio-img-container">
                 <img 
                   src={p.img} 
                   alt={p.title} 
-                  loading="lazy" /* OPTIMISATION ICI */
+                  loading="lazy" 
                   width="300" 
                   height="300"
-                  style={{ 
-                    ...imgStyle,
-                    transition: 'transform 0.4s ease-out'
-                  }} 
-                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
-                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                  className="portfolio-img"
                 />
-                <div style={categoryBadge}>{p.cat}</div>
+                <div className="portfolio-badge">{p.cat}</div>
               </div>
 
-              <div style={{ padding: '18px' }}>
-                <h4 style={{ margin: '0 0 6px 0', fontSize: '1rem', fontWeight: '700' }}>{p.title}</h4>
-                <p style={{ margin: 0, fontSize: '0.8rem', color: '#666', lineHeight: '1.5' }}>
-                  {p.desc}
-                </p>
+              <div className="portfolio-content">
+                <h4 className="portfolio-title">{p.title}</h4>
+                <p className="portfolio-desc">{p.desc}</p>
               </div>
 
             </Link>
@@ -86,41 +73,6 @@ const Portfolio = () => {
       </div>
     </section>
   );
-};
-
-const cardStyle = {
-  background: '#fff',
-  borderRadius: '10px',
-  overflow: 'hidden',
-  border: '1px solid #eee',
-  boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
-  cursor: 'pointer',
-  display: 'block' 
-};
-
-const imageContainerStyle = {
-  width: '100%',
-  aspectRatio: '1/1',
-  position: 'relative'
-};
-
-const imgStyle = {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-};
-
-const categoryBadge = {
-  position: 'absolute',
-  bottom: '10px',
-  left: '10px',
-  backgroundColor: '#0056B3',
-  color: '#fff',
-  padding: '3px 10px',
-  borderRadius: '3px',
-  fontSize: '0.65rem',
-  fontWeight: '600',
-  textTransform: 'uppercase'
 };
 
 export default Portfolio;

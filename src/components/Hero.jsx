@@ -1,41 +1,49 @@
 import React from "react";
-import heroVid from "../assets/hero-video.mp4"; 
-import heroPlaceholder from "../assets/hero-placeholder.jpg"; 
+import { ArrowRight, ArrowDown } from "phosphor-react";
+// Assurez-vous que l'image est bien dans src/assets/
+import heroBg from "../assets/hero-bg.jpg"; 
 
 const Hero = () => {
   return (
     <section id="accueil" className="hero-section">
-      {/* Vidéo de fond */}
-      <video 
-        autoPlay 
-        loop 
-        muted 
-        playsInline 
-        poster={heroPlaceholder} 
+      {/* IMAGE DE FOND */}
+      <img
+        src={heroBg}
+        alt="Agence ODA Fond"
         className="hero-video"
-        preload="metadata" /* Charge juste les métadonnées au début */
-      >
-        <source src={heroVid} type="video/mp4" />
-      </video>
+      />
 
-      {/* Overlay */}
+      {/* RIDEAU SOMBRE */}
       <div className="hero-overlay"></div>
 
-      {/* Contenu Texte */}
+      {/* CONTENU */}
       <div className="container hero-content">
-        <h1 className="hero-title">
-          L'architecture <span style={{ color: '#0056B3' }}>créative</span><br/>
-          au service de vos idées.
-        </h1>
-        <p className="hero-subtitle">
-          Agence ODA : Branding, Digital & Expériences immersives.
-        </p>
+        
+        {/* Texte et Bouton Centré */}
+        <div className="hero-text-block">
+          <h1 className="hero-title">
+            Transformons vos idées en <br />
+            <span style={{ color: '#0056B3' }}>réalité numérique</span>
+          </h1>
 
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <a href="#portfolio" className="btn-primary">
-            Nos Projets
-          </a>
+          <p className="hero-subtitle" style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto 40px', opacity: 0.9, lineHeight: '1.6' }}>
+            Agence créative basée au cœur de Lomé. Nous concevons des expériences digitales uniques qui marquent les esprits et propulsent votre marque.
+          </p>
+
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <a href="#portfolio" className="btn-primary">
+              <span>Nos Projets</span>
+              <ArrowRight size={20} weight="bold" className="btn-icon" />
+            </a>
+          </div>
         </div>
+
+        {/* FLÈCHE FLOTTANTE (SEULE) */}
+        <a href="#services" className="scroll-down-indicator">
+            {/* Texte supprimé ici */}
+            <ArrowDown size={40} weight="light" className="scroll-icon-anim" />
+        </a>
+
       </div>
     </section>
   );
